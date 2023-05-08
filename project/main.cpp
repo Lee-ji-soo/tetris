@@ -6,8 +6,8 @@ int main()
 {
     setBlock();
     spin();
+    pull();
     spin();
-    spin();
-    spin();
+    pull();
     return 0;
 };

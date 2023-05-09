@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+// 함수 선언.
+// extern : 전역변수 선언
+extern int map[10][10];
+
 int block[4][4] = {
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -208,4 +212,21 @@ void pull()
     }
 
     memcpy(block, temp, 64);
+}
+
+int isStack(int by, int bx)
+{
+    // block을 맵by, bx에 가져다 댔을 때
+    // 맵과 block이 겹치면 1, 안겹치면 0을 리턴.
+    for (int y = 0; y < 4; y++)
+    {
+        for (int x = 0; x < 4; x++)
+        {
+            if (block[by + y][bx + x] == 1 && map[by + y][bx + x] == 1)
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
 }

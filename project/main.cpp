@@ -65,15 +65,18 @@ int main()
         }
         if (GetAsyncKeyState(VK_DOWN) & 0x8001)
         {
-            dy++;
+            if (isStack(dy, dx - 1) == 0)
+                dx++;
         }
         if (GetAsyncKeyState(VK_RIGHT) & 0x8001)
         {
-            dx++;
+            if (isStack(dy, dx - 1) == 0)
+                dx++;
         }
         if (GetAsyncKeyState(VK_LEFT) & 0x8001)
         {
-            dx--;
+            if (isStack(dy, dx - 1) == 0)
+                dx--;
         }
         Sleep(100);
     }

@@ -47,7 +47,7 @@ void print()
             }
             else
             {
-                cout << '#';
+                cout << '≡';
             }
         }
         cout << endl;
@@ -82,9 +82,11 @@ int down()
 int main()
 {
     setBlock();
+    print();
+
+    int tick = 0;
     while (1)
     {
-        print();
         if (GetAsyncKeyState(VK_UP) & 0x8001)
         {
             spin();
@@ -94,20 +96,31 @@ int main()
                 spin();
                 spin();
             }
+            print();
         }
         if (GetAsyncKeyState(VK_DOWN) & 0x8001)
         {
             down();
+            print();
         }
         if (GetAsyncKeyState(VK_RIGHT) & 0x8001)
         {
             if (isStack(dy, dx + 1) == 0)
                 dx++;
+            print();
         }
         if (GetAsyncKeyState(VK_LEFT) & 0x8001)
         {
             if (isStack(dy, dx - 1) == 0)
                 dx--;
+            print();
+        }
+
+        tick++;
+        if (tick % 10 == 0)
+        {
+            down();
+            print();
         }
         Sleep(100);
     }

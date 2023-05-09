@@ -222,7 +222,9 @@ int isStack(int by, int bx)
     {
         for (int x = 0; x < 4; x++)
         {
-            if (block[y][x] == 1 && map[by + y][bx + x] == 1)
+            if (block[y][x] == 0)
+                continue;
+            if (map[by + y][bx + x] == 1)
             {
                 return 1;
             }
